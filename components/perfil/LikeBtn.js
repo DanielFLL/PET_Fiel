@@ -4,12 +4,15 @@ import { Button } from "react-native-paper";
 
 const LikeBtn = () => {
   const [like, setLike] = useState("heart-outline");
+  const [color, setColor] = useState("#2f2f2f");
 
   function likeChange() {
     if (like === "heart-outline") {
       setLike("heart");
+      setColor("red");
     } else {
       setLike("heart-outline");
+      setColor("#2f2f2f");
     }
   }
 
@@ -81,9 +84,9 @@ const LikeBtn = () => {
   return (
     <Button
       icon={like}
-      labelStyle={{ color: "red", fontSize: 36 }}
+      labelStyle={{ color: color, fontSize: 36 }}
       mode="outlined"
-      style={{ borderColor: "transparent", display: { aparece } }}
+      style={{ borderColor: "transparent", display: aparece }}
       onPress={() => likeChange()}></Button>
   );
 };
