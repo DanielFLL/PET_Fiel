@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
 import { Provider } from "react-native-paper";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { AuthProvider } from "hooks/AuthContext";
+import { AuthProvider } from "./components/authContext";
 
 import Home from "./pages/Home";
 import Favoritos from "./pages/Favoritos";

@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { createContext, useContext, useState } from "react";
 import { toast } from "react-toastify";
 
@@ -7,20 +8,20 @@ const AuthProvider = ({ children }) => {
   const hardcodedEmail = process.env.REACT_APP_HARDCODED_EMAIL || "seu_email";
   const hardcodedPassword =
     process.env.REACT_APP_HARDCODED_PASSWORD || "sua_senha";
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(AsyncStorage.getItem("token"));
 
   const login = (emailAndPassword) => {
     if (typeof emailAndPassword === "string") {
       // Tratamento para login com token
       setToken(emailAndPassword);
-      localStorage.setItem("token", emailAndPassword);
+      AsyncStorage.setItem("token", emailAndPassword);
     } else {
       // Tratamento para login com credenciais de usuário e senha
       const { email, password } = emailAndPassword;
       if (email === hardcodedEmail && password === hardcodedPassword) {
         const fakeToken = "seu_token_gerado_localmente";
         setToken(fakeToken);
-        localStorage.setItem("token", fakeToken);
+        AsyncStorage.setItem("token", fakeToken);
       } else {
         console.log("Credenciais inválidas");
         toast.error("Credenciais inválidas. Verifique seu e-mail e senha.");
@@ -30,7 +31,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setToken(null);
-    localStorage.removeItem("token");
+    AsyncStorageStatic.removeItem("token");
   };
 
   const authContextValue = {
