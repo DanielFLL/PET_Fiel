@@ -37,7 +37,6 @@ const CheBoxStatus = () => {
   }, [checked]);
 
   return (
-    // Adicionar aqui o Status com Text ou algo similar!!! Requisitar do BD.
     <View>
       <Checkbox
         status={checked ? "checked" : "unchecked"}

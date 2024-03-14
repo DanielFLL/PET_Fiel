@@ -37,6 +37,7 @@ const StatusAccordion = () => {
 
   return (
     <List.Section>
+      {/* Text com a opção do BD */}
       <Text style={{ marginTop: 10, marginLeft: 15 }} variant="titleLarge">
         Status: {opcao}
       </Text>

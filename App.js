@@ -4,18 +4,17 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
 import { Provider } from "react-native-paper";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { AuthProvider } from "hooks/AuthContext";
 
-
-import Home from './pages/Home'
-import Favoritos from './pages/Favoritos'
-import Groups from './pages/Groups'
+import Home from "./pages/Home";
+import Favoritos from "./pages/Favoritos";
+import Groups from "./pages/Groups";
 // import Settings from './pages/Settings'
-import Profile from './pages/Profile'
-
+import Profile from "./pages/Profile";
 
 function HomeScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Home />
     </View>
   );
@@ -23,7 +22,7 @@ function HomeScreen() {
 
 function FavoritosScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Favoritos />
     </View>
   );
@@ -31,7 +30,7 @@ function FavoritosScreen() {
 
 function GroupsScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Groups />
     </View>
   );
@@ -47,7 +46,7 @@ function GroupsScreen() {
 
 function ProfileScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Profile />
     </View>
   );
@@ -55,25 +54,27 @@ function ProfileScreen() {
 
 const Tab = createMaterialBottomTabNavigator();
 
-
 export default function App() {
   return (
     <Provider>
+      <AuthProvider>
         <NavigationContainer>
-
           <Tab.Navigator
-            initialRouteName='Home'
-            backBehavior='order'
+            initialRouteName="Home"
+            backBehavior="order"
             labeled={false}
-            activeColor='#64059F'
-            barStyle={{ backgroundColor: '#e9e9e9', height: 65 }}
-          >
+            activeColor="#64059F"
+            barStyle={{ backgroundColor: "#e9e9e9", height: 65 }}>
             <Tab.Screen
               name="Home"
               component={HomeScreen}
               options={{
                 tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons name="home-outline" color={color} size={26} />
+                  <MaterialCommunityIcons
+                    name="home-outline"
+                    color={color}
+                    size={26}
+                  />
                 ),
               }}
             />
@@ -82,7 +83,11 @@ export default function App() {
               component={FavoritosScreen}
               options={{
                 tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons name="heart-outline" color={color} size={26} />
+                  <MaterialCommunityIcons
+                    name="heart-outline"
+                    color={color}
+                    size={26}
+                  />
                 ),
               }}
             />
@@ -91,7 +96,11 @@ export default function App() {
               component={GroupsScreen}
               options={{
                 tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons name="account-group" color={color} size={26} />
+                  <MaterialCommunityIcons
+                    name="account-group"
+                    color={color}
+                    size={26}
+                  />
                 ),
               }}
             />
@@ -109,13 +118,17 @@ export default function App() {
               component={ProfileScreen}
               options={{
                 tabBarIcon: ({ color }) => (
-                  <MaterialCommunityIcons name="account-circle-outline" color={color} size={26} />
+                  <MaterialCommunityIcons
+                    name="account-circle-outline"
+                    color={color}
+                    size={26}
+                  />
                 ),
               }}
             />
           </Tab.Navigator>
-
         </NavigationContainer>
+      </AuthProvider>
     </Provider>
   );
 }
