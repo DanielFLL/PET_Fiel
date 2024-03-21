@@ -46,7 +46,7 @@ const Text_Fav = () => {
       </Text>
 
       {/* Integrar com BD */}
-      <Text
+      {/* <Text
         style={{
           padding: 10,
           textAlign: "justify",
@@ -60,7 +60,7 @@ const Text_Fav = () => {
             <p>{texto.content}</p>
           </div>
         ))}
-      </Text>
+      </Text> */}
 
       {/* Remover textos exemplos */}
       <Text
